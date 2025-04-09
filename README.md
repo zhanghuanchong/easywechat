@@ -1,6 +1,6 @@
 <h1 align="left"><a href="https://www.easywechat.com">EasyWeChat</a></h1>
 
-📦 一个 PHP 微信开发 SDK。
+📦 一个 PHP 微信开发 SDK。保持 5.x 版本的更新。
 
 [![Test Status](https://github.com/w7corp/easywechat/workflows/Test/badge.svg)](https://github.com/w7corp/easywechat/actions) 
 [![Lint Status](https://github.com/w7corp/easywechat/workflows/Lint/badge.svg)](https://github.com/w7corp/easywechat/actions) 
@@ -23,7 +23,7 @@
 
 ## Requirement
 
-1. PHP >= 7.4
+1. PHP >= 8.0
 2. **[Composer](https://getcomposer.org/)**
 3. openssl 拓展
 4. fileinfo 拓展（素材管理模块需要用到）
@@ -31,7 +31,7 @@
 ## Installation
 
 ```shell
-$ composer require "overtrue/wechat:^5.0" -vvv
+$ composer require "devwingcom/wechat:^5.0" -vvv
 ```
 
 ## Usage

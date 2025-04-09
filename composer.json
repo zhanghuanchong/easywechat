@@ -1,5 +1,5 @@
 {
-  "name": "overtrue/wechat",
+  "name": "devwingcom/wechat",
   "description": "微信SDK",
   "keywords": [
     "easywechat",
@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-    "php": ">=7.4",
+    "php": ">=8.0",
     "ext-fileinfo": "*",
     "ext-openssl": "*",
     "ext-simplexml": "*",
@@ -26,9 +26,9 @@
     "overtrue/socialite": "^3.2 || ^4.0",
     "pimple/pimple": "^3.0",
     "psr/simple-cache": "^1.0||^2.0||^3.0",
-    "symfony/cache": "^3.3 || ^4.3 || ^5.0 || ^6.0",
-    "symfony/event-dispatcher": "^4.3 || ^5.0 || ^6.0",
-    "symfony/http-foundation": "^2.7 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
+    "symfony/cache": "^3.3 || ^4.3 || ^5.0 || ^6.0 || ^7.0",
+    "symfony/event-dispatcher": "^4.3 || ^5.0 || ^6.0 || ^7.0",
+    "symfony/http-foundation": "^2.7 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
     "ext-libxml": "*"
   },
   "require-dev": {

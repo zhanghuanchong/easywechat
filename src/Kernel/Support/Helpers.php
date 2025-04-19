@@ -52,6 +52,14 @@ function get_encrypt_method(string $signType, string $secretKey = '')
     return 'md5';
 }
 
+function get_server_input()
+{
+    if (function_exists('request')) {
+        return request()->server();
+    }
+    return $_SERVER ?? [];
+}
+
 /**
  * Get client ip.
  *
@@ -59,8 +67,9 @@ function get_encrypt_method(string $signType, string $secretKey = '')
  */
 function get_client_ip()
 {
-    if (!empty($_SERVER['REMOTE_ADDR'])) {
-        $ip = $_SERVER['REMOTE_ADDR'];
+    $server = get_server_input();
+    if (!empty($server['REMOTE_ADDR'])) {
+        $ip = $server['REMOTE_ADDR'];
     } else {
         // for php-cli(phpunit etc.)
         $ip = defined('PHPUNIT_RUNNING') ? '127.0.0.1' : gethostbyname(gethostname());
@@ -76,10 +85,11 @@ function get_client_ip()
  */
 function get_server_ip()
 {
-    if (!empty($_SERVER['SERVER_ADDR'])) {
-        $ip = $_SERVER['SERVER_ADDR'];
-    } elseif (!empty($_SERVER['SERVER_NAME'])) {
-        $ip = gethostbyname($_SERVER['SERVER_NAME']);
+    $server = get_server_input();
+    if (!empty($server['SERVER_ADDR'])) {
+        $ip = $server['SERVER_ADDR'];
+    } elseif (!empty($server['SERVER_NAME'])) {
+        $ip = gethostbyname($server['SERVER_NAME']);
     } else {
         // for php-cli(phpunit etc.)
         $ip = defined('PHPUNIT_RUNNING') ? '127.0.0.1' : gethostbyname(gethostname());
@@ -95,13 +105,14 @@ function get_server_ip()
  */
 function current_url()
 {
+    $server = get_server_input();
     $protocol = 'http://';
 
-    if ((!empty($_SERVER['HTTPS']) && 'off' !== $_SERVER['HTTPS']) || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? 'http') === 'https') {
+    if ((!empty($server['HTTPS']) && 'off' !== $server['HTTPS']) || ($server['HTTP_X_FORWARDED_PROTO'] ?? 'http') === 'https') {
         $protocol = 'https://';
     }
 
-    return $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    return $protocol.$server['HTTP_HOST'].$server['REQUEST_URI'];
 }
 
 /**
